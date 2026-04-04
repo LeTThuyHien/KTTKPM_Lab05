@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: "mydb"
+      MYSQL_ROOT_PASSWORD: "password"
+    ports:
+      - "3307:3306"
+
+  app:
+    build: . # Dockerfile của Node.js nằm cùng thư mục
+    ports:
+      - "8080:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: mydb
+    depends_on:
+      - db
