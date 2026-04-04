@@ -13,3 +13,7 @@ cache = redis.Redis(
 def hello():
     count = cache.incr("hits")
     return f"Hello from Docker! I have been seen {count} time(s).\n"
+
+# 🔥 BẮT BUỘC có đoạn này
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
