@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "5051:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app

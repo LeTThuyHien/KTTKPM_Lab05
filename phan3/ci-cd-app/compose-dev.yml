@@ -1,0 +1,16 @@
+services:
+  app:
+    image: python:3.10
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "pip install -r requirements.txt && python app.py"
+    ports:
+      - "5050:5000"
+
+  tests:
+    image: python:3.10
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "pip install -r requirements.txt && pytest"
